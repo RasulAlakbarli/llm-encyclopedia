@@ -6,8 +6,8 @@ This design serves as the foundation for state-of-the-art LLMs including GPT-4, 
 import torch
 import torch.nn as nn
 
-from pos_encoding import RoPE
-from attention import GroupQueryAttention
+from positional_encoders import RoPE
+from attentions import GroupQueryAttention
 
 class MoE(nn.Module):
     def __init__(self, ):

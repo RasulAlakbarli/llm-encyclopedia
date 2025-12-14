@@ -2,8 +2,8 @@ import math
 import torch
 import torch.nn as nn
 
-from transformers.attention import MultiHeadAttention
-from transformers.pos_encoding import SinusoidalPositionalEncoding
+from attentions import MultiHeadAttention
+from positional_encoders import SinusoidalPositionalEncoding
 
 class EncoderBlock(nn.Module):
 	"""
