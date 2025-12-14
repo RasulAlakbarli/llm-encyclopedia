@@ -44,6 +44,15 @@ class MultiHeadAttention(nn.Module):
 		self.final_linear = nn.Linear(self.d_model, self.d_model)
   
 	def forward(self, x, mask=None, kv_input=None):
+        # 1. Q = X @ W_Q, K = X @ W_K, V = X @ W_V (dont forget cross attn)
+        # 2. Reshape [batch_size, N_seq, d_model] -> [batch_size, N_seq, N_head, d_head]
+        # 3. Transpose [batch_size, N_seq, N_head, d_head] -> [batch_size, N_head, N_seq, d_head]
+        # Compute scores = Softmax(Q@K.T / sqrt(d_head))
+        # Add mask (opt)
+        # Compute Scores @ V
+        # Transpose back to [batch_size, N_seq, N_head, d_head] and reshape to [batch_size, N_seq, d_model]
+        # Pass through final linear layer
+        
 		Q = self.W_Q(x)
 		if kv_input is not None:
 			K = self.W_K(kv_input)
@@ -69,3 +78,14 @@ class MultiHeadAttention(nn.Module):
 		x = x.transpose(1, 2).contiguous().view(batch_size, dec_seq_len, self.d_model)
 
 		return self.final_linear(x)
+
+
+class GroupQueryAttention(nn.Module):
+    """
+    Group Query Attention (GQA) implementation
+    """
+    def __init__(self):
+        super().__init__()
+        
+    def forward(self, x):
+        pass

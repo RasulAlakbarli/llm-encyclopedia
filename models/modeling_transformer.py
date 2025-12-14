@@ -23,11 +23,11 @@ class EncoderBlock(nn.Module):
   
 	def forward(self, x):
 		attn_out = self.attn(x) # [batch_size, N_seq, d_model]
-		# Truns out that pre normalization is more stable than post normalization (more modern models use pre-norm)
+		# Original Transformer uses Post-Norm, but Pre-Norm is more stable
 		x = self.norm1(x + self.dropout(attn_out))
 		ff_out = self.ff(x)
 		x = self.norm2(x + self.dropout(ff_out))
-  
+
 		return x # [batch_size, N_seq, d_model]
 
 
