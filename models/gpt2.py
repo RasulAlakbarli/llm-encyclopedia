@@ -28,7 +28,8 @@ class Block(nn.Module):
 		""" LayerNorm -> MHA -> Add -> LayerNorm -> Feed Forward -> Add """
   
 		x = self.norm1(x) # Pre Norm
-		attn = self.MHA(x) # Attention layer
+		mask = torch.tril(torch.ones(x.size(0), 1, x.size(1), x.size(1))).to(x.device)
+		attn = self.MHA(x, mask=mask) # Attention layer
 		x = x + self.dropout(attn) # Residual layer
 		x = self.norm2(x) # Norm
 		ff = self.feed_forward(x) # Feed forward layer
@@ -43,7 +44,6 @@ class GPT2(nn.Module):
 		self.blocks = nn.ModuleList([Block(d_model=d_model) for _ in range(N_stack)])
 		self.norm = nn.LayerNorm(d_model)
 		self.linear = nn.Linear(d_model, vocab_size)
-		self.softmax = nn.Softmax(dim=-1)
 		
 	def forward(self, x):
 		""" Input -> Embedding + Pos. Encoding -> Block x N -> LayerNorm -> Linear -> Softmax """
@@ -53,7 +53,6 @@ class GPT2(nn.Module):
 			x = block(x)
 		x = self.norm(x)
 		x = self.linear(x)
-		x = self.softmax(x)
 		return x
 
 if __name__ == "__main__":
