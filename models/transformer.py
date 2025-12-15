@@ -1,4 +1,5 @@
 import math
+from tkinter import N
 import torch
 import torch.nn as nn
 
@@ -68,7 +69,7 @@ class Transformer(nn.Module):
 	"""
 	Transformer Model from "Attention is All You Need" paper
 	"""
-	def __init__(self, d_model, N_stack, vocab_size):
+	def __init__(self, d_model: int = 512, N_stack: int = 6, vocab_size: int = 10000):
 		super().__init__()
 		self.d_model = d_model
 	
@@ -102,3 +103,14 @@ class Transformer(nn.Module):
 		linear_out = self.linear(x_dec)
 
 		return linear_out
+
+
+if __name__ == "__main__":
+	device = torch.device("mps")
+	model = Transformer().to(device)
+	batch_size, seq_len = 8, 1024
+	enc_inpt = torch.randint(0, 10000, (batch_size, seq_len)).to(device)
+	dec_inpt = torch.randint(0, 10000, (batch_size, seq_len)).to(device)
+	with torch.no_grad():
+		out = model(enc_inpt, dec_inpt)
+	print(out.shape)
