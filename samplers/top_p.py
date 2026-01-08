@@ -1,4 +1,3 @@
-import math
 import torch
 
 def topp_sampler(logits: torch.tensor, p: float, temp: float = 1.0):
