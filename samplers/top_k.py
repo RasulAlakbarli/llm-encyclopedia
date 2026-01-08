@@ -6,6 +6,7 @@ def topk_sampler(logits: torch.tensor, k: int, temp: float = 1.0):
     Args:
         logits (torch.tensor): The model output logits
         k (int): The number of top tokens to consider
+        temp (float, optional): Temperature for scaling logits. Defaults to 1.0.
     """
     # 0. Divide logits by temp
     logits = logits / temp

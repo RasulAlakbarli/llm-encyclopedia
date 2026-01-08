@@ -7,6 +7,7 @@ def topp_sampler(logits: torch.tensor, p: float, temp: float = 1.0):
     Args:
         logits (torch.tensor): The model output logits
         p (float): The cumulative probability threshold
+        temp (float, optional): Temperature for scaling logits. Defaults to 1.0.
     """
     # 0. Divide logits by temp
     logits = logits / temp
