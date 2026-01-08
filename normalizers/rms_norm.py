@@ -23,3 +23,10 @@ class RMSNorm(nn.Module):
         
         # 3. Normalize and Scale
         return x * rms * self.weight 
+    
+if __name__ == "__main__":
+    norm = RMSNorm(d_model=8)
+    x = torch.rand(2, 3, 8)
+    out = norm(x)
+    print(x)
+    print(out)
