@@ -1,6 +1,6 @@
 # Transformers: From Scratch to Understanding
 
-A learning repository exploring the foundational concepts of Large Language Models (LLMs), starting with the original Transformer architecture.
+A learning repository exploring the foundational concepts of Large Language Models (LLMs).
 
 ## Topics Covered
 
@@ -28,11 +28,11 @@ A learning repository exploring the foundational concepts of Large Language Mode
 ### Training
 - [Training Scripts](./training/train.py)
 
-## Blog
+## Blogs
 
 For detailed explanations with visuals, check out the accompanying blog posts:
 
-- [Coming Soon] - <Blog link>
+- [Notes from Ultrascale Playbook](https://curly-answer-0de.notion.site/Notes-from-Ultrascale-Playbook-2d21509c2e9e80a0a371cda05b25903c) - Distilled knowledge about distributed training strategies for large models from the book "Ultrascale Playbook" by HuggingFace.
 
 ## Resources
 
