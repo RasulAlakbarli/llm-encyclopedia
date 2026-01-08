@@ -4,28 +4,28 @@ A learning repository exploring the foundational concepts of Large Language Mode
 
 ## Topics Covered
 
-### Tokenization
+### [Tokenization](./tokenizers/)
 - [BPE Tokenizer](./tokenizers/bpe_tokenizer.py)
 
-### Positional Encoding
+### [Positional Encoding](./positional_encoders/)
 - [Sinusoidal Positional Encoding](./positional_encoders/sinusoidal_positional_encoding.py)
 - [Rotary Positional Encoding (RoPE)](./positional_encoders/rotary_positional_encoding.py)
 
-### Attention Mechanisms
+### [Attention Mechanisms](./attentions/)
 - [Scaled Dot-Product Attention](./attentions/scaled_dot_product_attention.py)
 - [Multi-Head Attention](./attentions/multi_head_attention.py)
 - [Group Query Attention (GQA)](./attentions/group_query_attention.py)
 
-### Models
+### [Models](./models/)
 - [Transformer](./models/transformer.py)
 - [GPT-2](./models/gpt2.py)
 - [Mixture of Experts (MoE)](./models/moe.py)
 
-### Sampling Strategies
+### [Sampling Strategies](./samplers/)
 - [Top-K Sampling](./samplers/top_k.py)
 - [Top-P (Nucleus) Sampling](./samplers/top_p.py)
 
-### Training
+### [Training](./training/)
 - [Training Scripts](./training/train.py)
 
 ## Blog
