@@ -1,4 +1,5 @@
 from .transformer import EncoderBlock, DecoderBlock, Transformer
+from .gpt2 import GPT2
 from .moe import MoE
 
 __all__ = [
@@ -6,4 +7,5 @@ __all__ = [
     "DecoderBlock",
     "Transformer",
     "MoE",
+    "GPT2"
 ]

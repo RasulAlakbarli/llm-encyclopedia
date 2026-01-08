@@ -38,14 +38,14 @@ class GroupQueryAttention(nn.Module):
 		K = K.repeat_interleave(self.Q_heads // self.KV_heads, dim=2).transpose(1, 2)
 		V = V.repeat_interleave(self.Q_heads // self.KV_heads, dim=2).transpose(1, 2)
 		
-		attn = Q@K.transpose(-2, -1)/math.sqrt(Q.size(-1))
+		attn = Q @ K.transpose(-2, -1)/math.sqrt(Q.size(-1))
 		if mask is not None:
 			attn = attn.masked_fill(mask == 0, float("-1e9"))
 
 		scores = self.softmax(attn)
   
 		x = self.dropout(scores)
-		x = x@V # (batch_size, n_heads, seq_len, d_head)
+		x = x @ V # (batch_size, n_heads, seq_len, d_head)
 		x = x.transpose(1, 2).contiguous().view(B, N, d_model)
 
 		return self.linear(x)
